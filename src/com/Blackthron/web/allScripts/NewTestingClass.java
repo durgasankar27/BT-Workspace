@@ -7,7 +7,8 @@ public class NewTestingClass {
 		int a=10;
 		int b=20;
 		int ismail=100;
-		// TODO Auto-generated method stub
+		String test="hello";
+
 
 	}
 
