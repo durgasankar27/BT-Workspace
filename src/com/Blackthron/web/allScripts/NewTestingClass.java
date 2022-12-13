@@ -12,5 +12,4 @@ public class NewTestingClass {
 		// TODO Auto-generated method stub
 
 	}
-
 }

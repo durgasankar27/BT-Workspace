@@ -15,11 +15,9 @@ import com.aventstack.extentreports.Status;
 
 public class class1 extends BaseTestWeb{
 	
-
-
-	/**
-	 * @throws Exception
-	 */
+	/*
+	  @throws Exception
+	*/
 	@Test (priority=1)
 	public void Lauchbrowser() throws Exception
 	{
@@ -34,8 +32,8 @@ public class class1 extends BaseTestWeb{
 		System.out.println(ConstantsWeb.UserName);
 		ConstantsWeb.password=prop.getProperty("password");
 		login.Login(ConstantsWeb.UserName, ConstantsWeb.password);
-		Thread.sleep(3000);	
-//		Application_Utilities.event("Tabbed");
+//		Thread.sleep(3000);	
+		Application_Utilities.event("Tabbed");
 //		Thread.sleep(10000);
 //		Application_Utilities.Event_Item("free", "Main");
 //		Application_Utilities.publish();
