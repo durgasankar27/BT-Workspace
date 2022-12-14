@@ -33,7 +33,7 @@ public class class1 extends BaseTestWeb{
 		ConstantsWeb.password=prop.getProperty("password");
 		login.Login(ConstantsWeb.UserName, ConstantsWeb.password);
 //		Thread.sleep(3000);	
-		Application_Utilities.event("Tabbed");
+		Application_Utilities.eventCreation("Tabbed");
 //		Thread.sleep(10000);
 //		Application_Utilities.Event_Item("free", "Main");
 //		Application_Utilities.publish();
