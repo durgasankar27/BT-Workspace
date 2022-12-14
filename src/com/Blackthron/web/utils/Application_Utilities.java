@@ -99,8 +99,7 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			eventpage.Save_eventitem.click();	
 			UtilitiesWeb.wait_until_the_page_is_loaded();
 			UtilitiesWeb.waitForAwhile();
-			eventpage.eventName.click();
-				
+			eventpage.eventName.click();	
 		}
 		
 		//This method is to publish an Event
