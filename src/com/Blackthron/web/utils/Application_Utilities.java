@@ -13,7 +13,7 @@ import com.BlackthronWeb.pages.*;
 public class Application_Utilities extends Base_Test_Web_Utils {
 	
 	//This method is for Creating Event with Required UI
-	public static void event(String Ui) {
+	public static void eventCreation(String Ui) {
 		WebDriverWait wait=new WebDriverWait(driver, 20);
 		EventsPage eventpage= new EventsPage(driver);
 		eventpage.applauncher.click();
@@ -57,7 +57,7 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 		
 	}
 		//This method is to create an Event item
-		public static void Event_Item(String price, String Type) {
+		public static void eventItemCreation(String price, String Type) {
 			EventsPage eventpage= new EventsPage(driver);
 			UtilitiesWeb.wait_until_the_page_is_loaded();
 			UtilitiesWeb.scroll_to_particular_element(eventpage.email_template);
@@ -99,12 +99,11 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			eventpage.Save_eventitem.click();	
 			UtilitiesWeb.wait_until_the_page_is_loaded();
 			UtilitiesWeb.waitForAwhile();
-			eventpage.eventName.click();
-				
+			eventpage.eventName.click();	
 		}
 		
 		//This method is to publish an Event
-		public static void publish() {
+		public static void publishAnEvent() {
 			EventsPage eventpage= new EventsPage(driver);
 			UtilitiesWeb.wait_until_element_is_visible(eventpage.Publish, 5);
 			UtilitiesWeb.wait_until_the_page_is_loaded();
