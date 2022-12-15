@@ -6,8 +6,6 @@ public class NewTestingClass {
 	{ 
 		int a=10;
 		int b=20;
-		int ismail=10;
-		String abc="Ismail is not innocent";
 		
 		// TODO Auto-generated method stub
 
