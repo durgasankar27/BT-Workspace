@@ -189,10 +189,8 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			erspage.ers_All_dropdown.click();
 			UtilitiesWeb.wait_until_the_page_is_loaded();
 			erspage.ers_record.click();
-			if(erspage.draft_status.isDisplayed() || erspage.to_process_status.isDisplayed()) {
-				System.out.println("Ismail is refreshed");
+			if(erspage.ers_status.getText().equalsIgnoreCase("Draft") || erspage.ers_status.getText().equalsIgnoreCase("To Process")) {
 				driver.navigate().refresh();
-				System.out.println("Ismail is fucked off");
 			}
 			else
 			{
