@@ -154,22 +154,6 @@ public class EventsPage {
 	  @FindBy(xpath="//span[contains(text(),'DONE')]")
 	  	public WebElement Done_button;
 	  
-	  @FindBy(xpath="//a[@title='Event Registration Submissions']")
-	  	public WebElement ERS;
-	  
-	  @FindBy(xpath="//a[contains(text(),'ER-')][1]")
-	  	public WebElement ers_record;
-	  @FindBy(xpath="(//span[text()='Status'])[2]")
-	  	public WebElement ers_status;
-	  
-	  @FindBy(xpath="//lightning-formatted-text[contains(text(),'Completed')]")
-	  	public WebElement completed_status;
-	  
-	  @FindBy(xpath="//lightning-formatted-text[contains(text(),'Draft')]")
-	  	public WebElement draft_status;
-	  
-	  @FindBy(xpath="//lightning-formatted-text[contains(text(),'To Process')]")
-	  	public WebElement to_process_status;
 	  @FindBy(xpath="//span[@title='Attendees']")
 	  	public WebElement event_Attendees;
 	  

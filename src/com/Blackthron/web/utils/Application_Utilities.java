@@ -175,5 +175,32 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			}
 		}
 		
+		public static void Verify_ERS() {
+			ERS_Page erspage= new ERS_Page(driver);
+			erspage.applauncher.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			erspage.applauncher_searchbox.sendKeys("Event Registration Submissions");
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			erspage.ERS.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.wait_until_element_is_visible(erspage.ers_recent_view_dropdown, 5);
+			erspage.ers_recent_view_dropdown.click();
+			UtilitiesWeb.wait_until_element_is_visible(erspage.ers_All_dropdown, 5);
+			erspage.ers_All_dropdown.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			erspage.ers_record.click();
+			if(erspage.draft_status.isDisplayed() || erspage.to_process_status.isDisplayed()) {
+				System.out.println("Ismail is refreshed");
+				driver.navigate().refresh();
+				System.out.println("Ismail is fucked off");
+			}
+			else
+			{
+				System.out.println("Completed");
+			}
+		}
+		
+		
+		
 		
 }
