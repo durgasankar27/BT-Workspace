@@ -1,5 +1,7 @@
 package com.Blackthron.web.allScripts;
 
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.Test;
@@ -33,12 +35,13 @@ public class class1 extends BaseTestWeb{
 		ConstantsWeb.password=prop.getProperty("password");
 		login.Login(ConstantsWeb.UserName, ConstantsWeb.password);
 //		Thread.sleep(3000);	
-		//Application_Utilities.eventCreation("Tabbed");
-//		Thread.sleep(10000);
-//		Application_Utilities.Event_Item("free", "Main");
-//		Application_Utilities.publish();
-//		Application_Utilities.Eventurl("staging");
-//		Application_Utilities.Code_creation("amount", 0);
+		Application_Utilities.eventCreation("Tabbed");
+        Thread.sleep(10000);
+		Application_Utilities.eventItemCreation("free", "Main");
+		Application_Utilities.publishAnEvent();
+		Application_Utilities.Eventurl("normal");	
+		Application_Utilities.Registration(1,"paid");
+		//Application_Utilities.Code_creation("amount", 0);
 		Application_Utilities.Verify_ERS();
 		}
 		catch(Exception e)		
