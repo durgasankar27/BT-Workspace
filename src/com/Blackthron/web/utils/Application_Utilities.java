@@ -9,6 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.BlackthronWeb.pages.*;
+import com.aventstack.extentreports.Status;
 
 
 public class Application_Utilities extends Base_Test_Web_Utils {
@@ -184,7 +185,7 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			}
 		}
 		
-		public static void Verify_ERS() {
+		public static void Verify_ERS() throws Exception {
 			ERS_Page erspage= new ERS_Page(driver);
 			erspage.applauncher.click();
 			UtilitiesWeb.wait_until_the_page_is_loaded();
@@ -198,13 +199,23 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			erspage.ers_All_dropdown.click();
 			UtilitiesWeb.wait_until_the_page_is_loaded();
 			erspage.ers_record.click();
-			if(erspage.draft_status.isDisplayed() || erspage.to_process_status.isDisplayed()) {
-				driver.navigate().refresh();
-				System.out.println("pointer is here");
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].scrollIntoView();", erspage.ers_status);
+			if(erspage.ers_status.getText().equalsIgnoreCase("Draft") || erspage.ers_status.getText().equalsIgnoreCase("To Process")) {
+				for(int i=0; i<=20;i++) {
+					UtilitiesWeb.wait_until_the_page_is_loaded();
+					js.executeScript("arguments[0].scrollIntoView();", erspage.ers_status);
+					if(erspage.ers_status.getText().equalsIgnoreCase("Completed")) {
+					break;
+					}
+					else {
+						driver.navigate().refresh();
+					}
+			}
 			}
 			else
 			{
-				System.out.println("Completed");
+				BasePageWeb.reportFail("ERS is Failed");
 			}
 		}
 		

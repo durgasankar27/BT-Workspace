@@ -34,16 +34,16 @@ public class ERS_Page {
 	  @FindBy(xpath="(//a[contains(text(),'ER-')])[1]")
 	  	public WebElement ers_record;
 	  
-	  @FindBy(xpath="(//span[text()='Status'])[2]")
+	  @FindBy(xpath="(//div[@class='test-id__field-label-container slds-form-element__label no-utility-icon'])[4]/../div[2]/span")
 	  	public WebElement ers_status;
 	  
-	  @FindBy(xpath="//lightning-formatted-text[contains(text(),'Completed')]")
-	  	public WebElement completed_status;
-	  
-	  @FindBy(xpath="//lightning-formatted-text[contains(text(),'Draft')]")
-	  	public WebElement draft_status;
-	  
-	  @FindBy(xpath="//lightning-formatted-text[contains(text(),'To Process')]")
-	  	public WebElement to_process_status;
+//	  @FindBy(xpath="//lightning-formatted-text[contains(text(),'Completed')]")
+//	  	public WebElement completed_status;
+//	  
+//	  @FindBy(xpath="//lightning-formatted-text[contains(text(),'Draft')]")
+//	  	public WebElement draft_status;
+//	  
+//	  @FindBy(xpath="//lightning-formatted-text[contains(text(),'To Process')]")
+//	  	public WebElement to_process_status;
 
 }
