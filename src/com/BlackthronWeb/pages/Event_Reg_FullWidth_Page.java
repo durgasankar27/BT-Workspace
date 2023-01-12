@@ -6,11 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Event_Reg_Tabbed_Page {
+public class Event_Reg_FullWidth_Page {
 	
 	
 	
-	public Event_Reg_Tabbed_Page(WebDriver driver)
+	public Event_Reg_FullWidth_Page(WebDriver driver)
 	{
 		
 		PageFactory.initElements(driver, this);

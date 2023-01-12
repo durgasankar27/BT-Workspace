@@ -5,8 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Registration {
-	public Registration(WebDriver driver)
+public class Events_Reg_Tabbed_Page {
+	public Events_Reg_Tabbed_Page(WebDriver driver)
 	{
 		
 		PageFactory.initElements(driver, this);
@@ -69,6 +69,27 @@ public class Registration {
 	
 	@FindBy(xpath="(//input[@name='email'])[2]")
 	 public WebElement email2;
+//	
+//	@FindBy(xpath="(//input[@name='email'])[2]")
+//	 public WebElement email2;
+//	
+//	@FindBy(xpath="(//input[@name='email'])[2]")
+//	 public WebElement email2;
+//	
+//	@FindBy(xpath="(//input[@name='email'])[2]")
+//	 public WebElement email2;
+//	
+//	@FindBy(xpath="(//input[@name='email'])[2]")
+//	 public WebElement email2;
+//	
+//	@FindBy(xpath="(//input[@name='email'])[2]")
+//	 public WebElement email2;
+//	
+//	@FindBy(xpath="(//input[@name='email'])[2]")
+//	 public WebElement email2;
+//	
+//	@FindBy(xpath="(//input[@name='email'])[2]")
+//	 public WebElement email2;
 	
 	
 	
