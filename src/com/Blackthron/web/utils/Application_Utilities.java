@@ -2,6 +2,7 @@ package com.Blackthron.web.utils;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
 import java.util.Set;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
@@ -100,7 +101,8 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			eventpage.Save_eventitem.click();	
 			UtilitiesWeb.wait_until_the_page_is_loaded();
 			UtilitiesWeb.waitForAwhile();
-			eventpage.eventName.click();	
+			eventpage.eventName.click();
+			
 		}
 		
 		//This method is to publish an Event
@@ -114,7 +116,6 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 		//This Method is to Open Event URL
 		public static void Eventurl(String domain) throws AWTException {
 			EventsPage eventpage= new EventsPage(driver);
-			Event_Reg_Tabbed_Page EventRegpage= new Event_Reg_Tabbed_Page(driver);
 			UtilitiesWeb.wait_until_the_page_is_loaded();
 			UtilitiesWeb.scroll_to_particular_element(eventpage.Eventdate_tab);
 			String prod_url= eventpage.EventReglink.getText();
@@ -143,10 +144,18 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			{
 				Actions action = new Actions(driver);
 				action.moveToElement(eventpage.EventReglink).click().perform();
-				
+				String mainWindow=driver.getWindowHandle();
+			 	Set<String> set =driver.getWindowHandles();
+			 	Iterator<String> itr= set.iterator();
+			 	while(itr.hasNext()){
+			 	String childWindow=itr.next();
+			 	if(!mainWindow.equals(childWindow)){
+			 		driver.switchTo().window(childWindow); //Switching to 2nd Tab
+			 	}}
 			}
+			UtilitiesWeb.waitForAwhile();
 			
-			UtilitiesWeb.wait_until_element_is_visible(EventRegpage.RegisterButton, 10);
+			
 		}
 		
 		
@@ -210,7 +219,92 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			}
 		}
 		
+		public static void Registration(String  UI, String price) throws Exception {
+			
+			if(price.equalsIgnoreCase("free")) {
+			Events_Reg_Tabbed_Page reg=new Events_Reg_Tabbed_Page(driver);
+			//UtilitiesWeb.waitForAwhile();
+			reg.reg_button.click();
+			reg.listbox.click();
+			if(UI=="Tabbed")
+			{
+				reg.one_Ticket.click();
+				reg.register_button.click();
+				reg.first_name.click();
+				reg.first_name.sendKeys(UtilitiesWeb.Randomname(6));
+				reg.last_name.click();
+				reg.last_name.sendKeys(UtilitiesWeb.Randomname(4));
+				reg.email.click();
+				reg.email.sendKeys(UtilitiesWeb.generateEmailid());
+				Thread.sleep(2000);
+				reg.regbutton.click();
+				Thread.sleep(2000);
+				reg.regbutton.click();
+				String success_msg=reg.success_message.getText();
+				System.out.println(success_msg);
+				reg.Done_button.clear();
+			}
+			else if(UI=="FullWidth")
+			{
+			//	System.out.println("0 Tickets are selected");
+			}
+			else if(UI=="Simple")
+			{
+//				reg.Second_ticket.click();
+				
+//				    reg.first_name1.click();
+//					reg.first_name1.sendKeys(UtilitiesWeb.Randomname(6));
+//					reg.last_name1.click();
+//					reg.last_name1.sendKeys(UtilitiesWeb.Randomname(4));
+//					reg.email1.click();
+//					reg.email1.sendKeys(UtilitiesWeb.generateEmailid());
+//					UtilitiesWeb.scroll_to_particular_element(reg.first_name2);
+//					reg.first_name2.click();
+//					reg.first_name2.sendKeys(UtilitiesWeb.Randomname(6));
+//					reg.last_name2.click();
+//					reg.last_name2.sendKeys(UtilitiesWeb.Randomname(4));
+//					reg.email2.click();
+//					reg.email2.sendKeys(UtilitiesWeb.generateEmailid());
+//					UtilitiesWeb.scrollTop(driver);
+//					Thread.sleep(2000);
+//					reg.regbutton.click();
+//					Thread.sleep(2000);
+//					reg.regbutton.click();
+//					String success_msg=reg.success_message.getText();
+//					System.out.println(success_msg);
+//					UtilitiesWeb.wait_until_element_is_visible(reg.Done_button,4);
+//					reg.Done_button.clear();
+			}
+			else {
+				System.out.println("No Tickets are selected");
+			}
+			
+			reg.register_button.click();
+			}
+			else {
+				
+				
+				
+			}
+			
+		   
+
+		
+		
+		}}
+		
+
+
+		
+
+
+
+		
+			
 		
 		
 		
-}
+		
+		
+		
+
