@@ -12,7 +12,7 @@ public class Events_Reg_Tabbed_Page {
 		PageFactory.initElements(driver, this);
 	 }
 	
-	@FindBy(xpath="(//span[text()='Register'])[1]")
+	@FindBy(xpath="(//span[text()='Register'])[2]")
 	 public WebElement reg_button;
 	
 	@FindBy(xpath="//mat-select[@role='listbox']")
