@@ -24,7 +24,9 @@ public class ConstantsWeb {
 	//public static String browser = "firefox";
    //public static String browser="Safari";
 	
-       public static String URL= "https://login.salesforce.com";
+    public static String URL= "https://login.salesforce.com";
+    public static String domain="production";
+    //public static String domain="staging";
        
       
 	
