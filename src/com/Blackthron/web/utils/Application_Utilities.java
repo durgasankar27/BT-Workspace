@@ -318,7 +318,192 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			}
 			
 			//reg.register_button.click();
+	  }
+			
+		public static void FormCreation(String Type) {
+			
+			Form_Page formpage= new Form_Page(driver);
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			Actions action = new Actions(driver);
+			formpage.applauncher.click();
+			formpage.searchBar.click();
+			formpage.searchBar.sendKeys("Forms");
+			formpage.Forms.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			formpage.form_new.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.wait_until_elememt_is_enable(formpage.form_save_button, 5);
+			formpage.form_name.click();
+			formpage.form_name.sendKeys(UtilitiesWeb.Randomname(5));
+			formpage.form_type.click();
+			if(Type.equalsIgnoreCase("Post-Registration"))
+			{
+				formpage.Post_registration.click();
 			}
+			else if(Type.equalsIgnoreCase("Survey"))
+			{
+				formpage.Survey.click();
+			}
+			
+			else {
+				formpage.Pre_registration.click();
+			}
+			formpage.form_save_button.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//Creation of Form Element
+			
+			//Big List Group Element
+//			formpage.Form_Element_type.click();
+//			formpage.Big_List_Group.click();
+//			UtilitiesWeb.waitForAwhile();
+//			action.moveToElement(formpage.question_name).click().perform();
+//			action.moveToElement(formpage.question_name).sendKeys("Big List Question?").perform();
+//			formpage.Form_Element_Save.click();
+			
+			//Checkbox Element
+			formpage.Form_Element_type.click();
+			formpage.Checkbox.click();
+			UtilitiesWeb.waitForAwhile();
+			action.moveToElement(formpage.question_name).click().perform();
+			action.moveToElement(formpage.question_name).sendKeys("Checkbox Question?").perform();
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//Date Element
+			formpage.Form_Element_type.click();
+			formpage.Date.click();
+			UtilitiesWeb.waitForAwhile();
+			action.moveToElement(formpage.question_name).click().perform();
+			action.moveToElement(formpage.question_name).sendKeys("Date Question?").perform();
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//Divider Element
+			formpage.Form_Element_type.click();
+			formpage.Divider.click();
+			UtilitiesWeb.waitForAwhile();
+			action.moveToElement(formpage.question_name).click().perform();
+			action.moveToElement(formpage.question_name).sendKeys("Divider Question?").perform();
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//Email Element
+			formpage.Form_Element_type.click();
+			formpage.Email.click();
+			UtilitiesWeb.waitForAwhile();
+			action.moveToElement(formpage.question_name).click().perform();
+			action.moveToElement(formpage.question_name).sendKeys("Email Question?").perform();
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//File Upload Element
+			formpage.Form_Element_type.click();
+			formpage.File_Upload.click();
+			UtilitiesWeb.waitForAwhile();
+			action.moveToElement(formpage.question_name).click().perform();
+			action.moveToElement(formpage.question_name).sendKeys("File Upload Question?").perform();
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//Hidden Element
+			formpage.Form_Element_type.click();
+			formpage.Hidden.click();
+			UtilitiesWeb.waitForAwhile();
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//Multi-Select Picklist Element
+			formpage.Form_Element_type.click();
+			formpage.Multi_Select_Picklist.click();
+			UtilitiesWeb.waitForAwhile();
+			action.moveToElement(formpage.question_name).click().perform();
+			action.moveToElement(formpage.question_name).sendKeys("Multi-Select Picklist Question?").perform();
+			UtilitiesWeb.scrollToElementb(driver, formpage.question_name);
+			formpage.Picklist_values.click();
+			formpage.Picklist_values.sendKeys("a1\nb2\nc3\nd4\ne5");
+			UtilitiesWeb.scrollTop(driver);
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//Number Element
+			formpage.Form_Element_type.click();
+			js.executeScript("arguments[0].scrollIntoView();", formpage.Multi_Select_Picklist);
+			formpage.Number.click();
+			UtilitiesWeb.waitForAwhile();
+			action.moveToElement(formpage.question_name).click().perform();
+			action.moveToElement(formpage.question_name).sendKeys("Number Question?").perform();
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//Parameter Element
+			formpage.Form_Element_type.click();
+			js.executeScript("arguments[0].scrollIntoView();", formpage.Multi_Select_Picklist);
+			formpage.Parameter.click();
+			UtilitiesWeb.waitForAwhile();
+			action.moveToElement(formpage.question_name).click().perform();
+			action.moveToElement(formpage.question_name).sendKeys("Parameter Question?").perform();
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//Picklist Element
+			formpage.Form_Element_type.click();
+			js.executeScript("arguments[0].scrollIntoView();", formpage.Multi_Select_Picklist);
+			formpage.Picklist.click();
+			UtilitiesWeb.waitForAwhile();
+			action.moveToElement(formpage.question_name).click().perform();
+			action.moveToElement(formpage.question_name).sendKeys("Picklist Question?").perform();
+			UtilitiesWeb.scrollToElementb(driver, formpage.question_name);
+			formpage.Picklist_values.click();
+			formpage.Picklist_values.sendKeys("a1\nb2\nc3\nd4\ne5");
+			UtilitiesWeb.scrollTop(driver);
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//Text Element
+			formpage.Form_Element_type.click();
+			js.executeScript("arguments[0].scrollIntoView();", formpage.Multi_Select_Picklist);
+			formpage.Text.click();
+			UtilitiesWeb.waitForAwhile();
+			action.moveToElement(formpage.question_name).click().perform();
+			action.moveToElement(formpage.question_name).sendKeys("Text Question?").perform();
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//Text(30,000) Element
+			formpage.Form_Element_type.click();
+			js.executeScript("arguments[0].scrollIntoView();", formpage.Multi_Select_Picklist);
+			formpage.long_text.click();
+			UtilitiesWeb.waitForAwhile();
+			action.moveToElement(formpage.question_name).click().perform();
+			action.moveToElement(formpage.question_name).sendKeys("Text(30,000) Question?").perform();
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+			
+			//URL Element
+			formpage.Form_Element_type.click();
+			js.executeScript("arguments[0].scrollIntoView();", formpage.Multi_Select_Picklist);
+			formpage.URL.click();
+			UtilitiesWeb.waitForAwhile();
+			action.moveToElement(formpage.question_name).click().perform();
+			action.moveToElement(formpage.question_name).sendKeys("URL Question?").perform();
+			formpage.Form_Element_Save.click();
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			UtilitiesWeb.waitForAwhile();
+		}
 		
 			
 		   
