@@ -7,6 +7,7 @@ import java.util.Set;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import com.BlackthronWeb.pages.*;
 
 import com.BlackthronWeb.pages.*;
 import com.aventstack.extentreports.Status;
@@ -187,6 +188,15 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 		
 		public static void Verify_ERS() throws Exception {
 			ERS_Page erspage= new ERS_Page(driver);
+			
+			String mainWindow=driver.getWindowHandle();
+		 	Set<String> set =driver.getWindowHandles();
+		 	Iterator<String> itr= set.iterator();
+		 	while(itr.hasNext()){
+		 	String childWindow=itr.next();
+		 	if(!mainWindow.equals(childWindow)){
+		 	driver.switchTo().window(childWindow);
+			
 			erspage.applauncher.click();
 			UtilitiesWeb.wait_until_the_page_is_loaded();
 			erspage.applauncher_searchbox.sendKeys("Event Registration Submissions");
@@ -216,18 +226,21 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			else
 			{
 				BasePageWeb.reportFail("ERS is Failed");
-			}
+			}}}
 		}
 		
 		public static void Registration(String  UI, String price) throws Exception {
 			
-			if(price.equalsIgnoreCase("free")) {
+			if(price=="free") {
+			if(UI.equalsIgnoreCase("Tabbed")) {
+	
 			Events_Reg_Tabbed_Page reg=new Events_Reg_Tabbed_Page(driver);
 			//UtilitiesWeb.waitForAwhile();
+		    UtilitiesWeb.wait_until_element_is_visible(reg.reg_button,8);
 			reg.reg_button.click();
 			reg.listbox.click();
-			if(UI=="Tabbed")
-			{
+			//if(UI=="Tabbed")
+			//{
 				reg.one_Ticket.click();
 				reg.register_button.click();
 				reg.first_name.click();
@@ -244,13 +257,38 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 				System.out.println(success_msg);
 				reg.Done_button.clear();
 			}
-			else if(UI=="FullWidth")
+			else if(UI.equalsIgnoreCase("Full Width"))
 			{
-			//	System.out.println("0 Tickets are selected");
-			}
+			    
+				Event_Reg_FullWidth_Page reg_full=new Event_Reg_FullWidth_Page(driver); 
+				UtilitiesWeb.wait_until_element_is_visible(reg_full.RegisterButton, 10);
+				//Thread.sleep(3000);
+				UtilitiesWeb.scroll_to_particular_element(reg_full.RegisterButton);
+				reg_full.RegisterButton.click();
+				UtilitiesWeb.wait_until_element_is_visible(reg_full.firstname, 5);
+				reg_full.firstname.click();
+				reg_full.firstname.sendKeys(UtilitiesWeb.Randomname(4));
+				reg_full.Lastname.click();
+				reg_full.Lastname.sendKeys(UtilitiesWeb.Randomname(4));
+				reg_full.Email.click();
+				reg_full.Email.sendKeys(UtilitiesWeb.generateEmailid());
+				reg_full.confirm.click();
+				}}
 			else if(UI=="Simple")
 			{
-//				reg.Second_ticket.click();
+			Event_Reg_Simple_Page Reg_Simple=new Event_Reg_Simple_Page(driver);
+			UtilitiesWeb.wait_until_element_is_visible(Reg_Simple.firstname, 8);
+			Reg_Simple.firstname.click();
+			Reg_Simple.firstname.sendKeys(UtilitiesWeb.Randomname(4));
+			Reg_Simple.lastName.click();
+			Reg_Simple.lastName.sendKeys(UtilitiesWeb.Randomname(3));
+			Reg_Simple.email.click();
+			Reg_Simple.email.sendKeys(UtilitiesWeb.generateEmailid());
+			Reg_Simple.Register_button.click();	
+				
+				
+				
+//                	reg.Second_ticket.click();
 				
 //				    reg.first_name1.click();
 //					reg.first_name1.sendKeys(UtilitiesWeb.Randomname(6));
@@ -276,18 +314,12 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 //					reg.Done_button.clear();
 			}
 			else {
-				System.out.println("No Tickets are selected");
+				// System.out.println("No Tickets are selected");
 			}
 			
-			reg.register_button.click();
-			}
-			else {
-				
-				
-				
-			}
-			}
-		
+			//reg.register_button.click();
+	  }
+			
 		public static void FormCreation(String Type) {
 			
 			Form_Page formpage= new Form_Page(driver);
@@ -472,7 +504,13 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			UtilitiesWeb.wait_until_the_page_is_loaded();
 			UtilitiesWeb.waitForAwhile();
 		}
-}
+		
+			
+		   
+
+		
+		
+		}
 		
 
 

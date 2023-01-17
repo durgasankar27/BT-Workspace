@@ -16,7 +16,19 @@ public class Event_Reg_FullWidth_Page {
 		PageFactory.initElements(driver, this);
 	 }
 	
-	  @FindBy(xpath="//span[text()='Register']")
-		 public WebElement RegisterButton;
-	
+	  @FindBy(xpath="(//span[text()='Register'])[2]")
+		 public WebElement RegisterButton;	 
+	  
+	  @FindBy(xpath="//input[@name='firstName']")
+		 public WebElement firstname;
+	  
+	   @FindBy(xpath="//input[@name='lastName']")
+		 public WebElement Lastname;
+	   
+	  @FindBy(xpath="//input[@name='email']")
+		 public WebElement Email;
+	  
+	  
+	  @FindBy(xpath="//button[@type='submit']")
+		 public WebElement confirm;
 }	
