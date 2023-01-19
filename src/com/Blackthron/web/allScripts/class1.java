@@ -36,12 +36,12 @@ public class class1 extends BaseTestWeb{
 		ConstantsWeb.password=prop.getProperty("password");
 		login.Login(ConstantsWeb.UserName, ConstantsWeb.password);
 //		Thread.sleep(3000);	
-		Application_Utilities.eventCreation("Simple");
+		Application_Utilities.eventCreation("Full Width");
         Thread.sleep(10000);
-		Application_Utilities.eventItemCreation("free", "Main");
+		Application_Utilities.eventItemCreation("paid", "Main");
 		Application_Utilities.publishAnEvent();
 		Application_Utilities.Eventurl("staging");	
-		Application_Utilities.Registration("Simple","free");
+		Application_Utilities.Registration("Full Width","paid","card");
 		//Application_Utilities.Code_creation("amount", 0);
 		
 		//Application_Utilities.Verify_ERS();
