@@ -75,7 +75,7 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			
 			//Determine the Ticket Price
 			if(price.equalsIgnoreCase("paid")) {
-				int amount = UtilitiesWeb.generateNumber(1000);
+			int amount = UtilitiesWeb.generateNumber(1000);
 				eventpage.Eventitem_price.click();
 				eventpage.Eventitem_price.sendKeys(String.valueOf(amount));
 			}
@@ -229,18 +229,61 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			}}}
 		}
 		
-		public static void Registration(String  UI, String price) throws Exception {
+		public static void PaidRegistration(String PayType) throws Exception {
+			    Events_Reg_Tabbed_Page reg=new Events_Reg_Tabbed_Page(driver);
+				Events_Reg_PaidTickets_Page paidreg=new Events_Reg_PaidTickets_Page(driver);
+				reg.listbox.click();
+				reg.one_Ticket.click();
+				Thread.sleep(1000);
+				paidreg.CheckoutButton.click();
+				reg.first_name.click();
+				reg.first_name.sendKeys(UtilitiesWeb.Randomname(6));
+				reg.last_name.click();
+				reg.last_name.sendKeys(UtilitiesWeb.Randomname(4));
+				reg.email.click();
+				reg.email.sendKeys(UtilitiesWeb.generateEmailid());
+				Thread.sleep(2000);
+				paidreg.PaymentButton.click();
+				Thread.sleep(2000);
+				
+				if(PayType.equalsIgnoreCase("card")) {
+				UtilitiesWeb.scroll_to_particular_element(paidreg.cardNumber);
+				paidreg.cardNumber.click();
+				paidreg.cardNumber.sendKeys("4242424242424242");
+				paidreg.cardName.click();
+				paidreg.cardName.sendKeys(UtilitiesWeb.Randomname(3));
+				paidreg.cardExpiry.click();
+				paidreg.cardExpiry.sendKeys("0229");
+				paidreg.CVV.click();
+				paidreg.CVV.sendKeys("345");
+				paidreg.country.click();
+				paidreg.US.click();
+				paidreg.postalCode.click();
+				paidreg.postalCode.sendKeys("10010");
+				//UtilitiesWeb.scroll_to_particular_element(paidreg.Payment_Button);
+				UtilitiesWeb.scrollTop(driver);
+				paidreg.Payment_Button.click();
+				}
+				
+				else{
+					UtilitiesWeb.scroll_to_particular_element(paidreg.payLater);
+					paidreg.payLater.click();
+					UtilitiesWeb.scrollTop(driver);
+					paidreg.completeButton.click();
+				}
+		}
+		
+		public static void Registration(String  UI, String price, String Payment_Type) throws Exception {
 			
-			if(price=="free") {
-			if(UI.equalsIgnoreCase("Tabbed")) {
-	
+			 if(UI.equalsIgnoreCase("Tabbed"))
+			 {
+			 if(price.equalsIgnoreCase("free")) {
 			Events_Reg_Tabbed_Page reg=new Events_Reg_Tabbed_Page(driver);
 			//UtilitiesWeb.waitForAwhile();
 		    UtilitiesWeb.wait_until_element_is_visible(reg.reg_button,8);
 			reg.reg_button.click();
 			reg.listbox.click();
-			//if(UI=="Tabbed")
-			//{
+			
 				reg.one_Ticket.click();
 				reg.register_button.click();
 				reg.first_name.click();
@@ -257,9 +300,25 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 				System.out.println(success_msg);
 				reg.Done_button.clear();
 			}
-			else if(UI.equalsIgnoreCase("Full Width"))
+			else if(price.equalsIgnoreCase("paid")) 
 			{
-			    
+				Events_Reg_PaidTickets_Page reg_paid=new Events_Reg_PaidTickets_Page(driver);
+				UtilitiesWeb.wait_until_the_page_is_loaded();
+				//Thread.sleep(30000);
+				reg_paid.GetTicketsButton.click();
+				 if (Payment_Type.equalsIgnoreCase("card")) {
+				PaidRegistration("card");
+				}
+			     if (Payment_Type.equalsIgnoreCase("PayLater"))
+			{
+			    	 PaidRegistration("PayLater");
+			}}
+			 
+			 
+			 
+	          if(UI.equalsIgnoreCase("Full Width"))
+			  {
+				if(price.equalsIgnoreCase("free")) { 
 				Event_Reg_FullWidth_Page reg_full=new Event_Reg_FullWidth_Page(driver); 
 				UtilitiesWeb.wait_until_element_is_visible(reg_full.RegisterButton, 10);
 				//Thread.sleep(3000);
@@ -273,11 +332,34 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 				reg_full.Email.click();
 				reg_full.Email.sendKeys(UtilitiesWeb.generateEmailid());
 				reg_full.confirm.click();
-				}}
-			else if(UI=="Simple")
+				}
+				else if(price.equalsIgnoreCase("paid")) {
+					
+					Events_Reg_PaidTickets_Page reg_paid=new Events_Reg_PaidTickets_Page(driver);
+					UtilitiesWeb.wait_until_the_page_is_loaded();
+					System.out.println("pointer 1");
+					Thread.sleep(3000);
+					System.out.println("pointer 2");
+					UtilitiesWeb.scroll_to_particular_element(reg_paid.GetTicketsButton);
+					System.out.println("pointer 3");
+					reg_paid.GetTicketsButton.click();
+					if(Payment_Type.equalsIgnoreCase("card")) {
+						PaidRegistration("card");
+					}
+				
+					else {
+						PaidRegistration("PayLater");
+					}	
+				}
+				}
+		    
+			if(UI.equalsIgnoreCase("Simple"))
 			{
 			Event_Reg_Simple_Page Reg_Simple=new Event_Reg_Simple_Page(driver);
-			UtilitiesWeb.wait_until_element_is_visible(Reg_Simple.firstname, 8);
+			UtilitiesWeb.wait_until_the_page_is_loaded();
+			
+			//UtilitiesWeb.wait_until_element_is_visible(Reg_Simple.firstname, 10);
+			System.out.println("pointer is here");
 			Reg_Simple.firstname.click();
 			Reg_Simple.firstname.sendKeys(UtilitiesWeb.Randomname(4));
 			Reg_Simple.lastName.click();
@@ -288,37 +370,28 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 				
 				
 				
-//                	reg.Second_ticket.click();
-				
-//				    reg.first_name1.click();
-//					reg.first_name1.sendKeys(UtilitiesWeb.Randomname(6));
-//					reg.last_name1.click();
-//					reg.last_name1.sendKeys(UtilitiesWeb.Randomname(4));
-//					reg.email1.click();
-//					reg.email1.sendKeys(UtilitiesWeb.generateEmailid());
-//					UtilitiesWeb.scroll_to_particular_element(reg.first_name2);
-//					reg.first_name2.click();
-//					reg.first_name2.sendKeys(UtilitiesWeb.Randomname(6));
-//					reg.last_name2.click();
-//					reg.last_name2.sendKeys(UtilitiesWeb.Randomname(4));
-//					reg.email2.click();
-//					reg.email2.sendKeys(UtilitiesWeb.generateEmailid());
-//					UtilitiesWeb.scrollTop(driver);
-//					Thread.sleep(2000);
-//					reg.regbutton.click();
-//					Thread.sleep(2000);
-//					reg.regbutton.click();
-//					String success_msg=reg.success_message.getText();
-//					System.out.println(success_msg);
-//					UtilitiesWeb.wait_until_element_is_visible(reg.Done_button,4);
-//					reg.Done_button.clear();
-			}
-			else {
-				// System.out.println("No Tickets are selected");
 			}
 			
-			//reg.register_button.click();
-	  }
+//			else if (price=="") {
+//				//if(UI.equalsIgnoreCase("Tabbed")) {
+//					
+//				
+//			}
+//			
+			else {
+				
+				System.out.println("No Tickets are selected");
+				Events_Reg_PaidTickets_Page reg_paid=new Events_Reg_PaidTickets_Page(driver);
+				UtilitiesWeb.wait_until_the_page_is_loaded();
+				Thread.sleep(3000);
+				//UtilitiesWeb.waitForAwhile();
+				//UtilitiesWeb.wait_until_element_is_visible(reg_paid.GetTicketsButton, 8);
+				UtilitiesWeb.scroll_to_particular_element(reg_paid.GetTicketsButton);
+				reg_paid.GetTicketsButton.click();
+			}}}
+			
+			
+	  
 			
 		public static void FormCreation(String Type) {
 			
