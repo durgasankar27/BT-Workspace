@@ -263,6 +263,10 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 				//UtilitiesWeb.scroll_to_particular_element(paidreg.Payment_Button);
 				UtilitiesWeb.scrollTop(driver);
 				paidreg.Payment_Button.click();
+				Events_Reg_Tabbed_Page reg2=new Events_Reg_Tabbed_Page(driver);
+				UtilitiesWeb.wait_until_element_is_visible(reg2.success_message, 10);
+				String success_msg=reg2.success_message.getText();
+				System.out.println(success_msg);
 				}
 				
 				else{
@@ -270,6 +274,10 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 					paidreg.payLater.click();
 					UtilitiesWeb.scrollTop(driver);
 					paidreg.completeButton.click();
+					Events_Reg_Tabbed_Page reg2_1=new Events_Reg_Tabbed_Page(driver);
+					UtilitiesWeb.wait_until_element_is_visible(reg2_1.success_message, 10);
+					String success_msg=reg2_1.success_message.getText();
+					System.out.println(success_msg);
 				}
 		}
 		
@@ -312,16 +320,16 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			     if (Payment_Type.equalsIgnoreCase("PayLater"))
 			{
 			    	 PaidRegistration("PayLater");
-			}}
+			}}}
 			 
 			 
 			 
 	          if(UI.equalsIgnoreCase("Full Width"))
 			  {
-				if(price.equalsIgnoreCase("free")) { 
+	          	if(price.equalsIgnoreCase("free")) { 
 				Event_Reg_FullWidth_Page reg_full=new Event_Reg_FullWidth_Page(driver); 
-				UtilitiesWeb.wait_until_element_is_visible(reg_full.RegisterButton, 10);
-				//Thread.sleep(3000);
+				//UtilitiesWeb.wait_until_element_is_visible(reg_full.RegisterButton, 15);
+				Thread.sleep(5000);
 				UtilitiesWeb.scroll_to_particular_element(reg_full.RegisterButton);
 				reg_full.RegisterButton.click();
 				UtilitiesWeb.wait_until_element_is_visible(reg_full.firstname, 5);
@@ -332,16 +340,17 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 				reg_full.Email.click();
 				reg_full.Email.sendKeys(UtilitiesWeb.generateEmailid());
 				reg_full.confirm.click();
-				}
+				Events_Reg_Tabbed_Page reg1=new Events_Reg_Tabbed_Page(driver);
+				UtilitiesWeb.wait_until_element_is_visible(reg1.success_message, 10);
+				String success_msg=reg1.success_message.getText();
+				System.out.println(success_msg);
+		    	}
 				else if(price.equalsIgnoreCase("paid")) {
 					
 					Events_Reg_PaidTickets_Page reg_paid=new Events_Reg_PaidTickets_Page(driver);
 					UtilitiesWeb.wait_until_the_page_is_loaded();
-					System.out.println("pointer 1");
 					Thread.sleep(3000);
-					System.out.println("pointer 2");
 					UtilitiesWeb.scroll_to_particular_element(reg_paid.GetTicketsButton);
-					System.out.println("pointer 3");
 					reg_paid.GetTicketsButton.click();
 					if(Payment_Type.equalsIgnoreCase("card")) {
 						PaidRegistration("card");
@@ -349,16 +358,14 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 				
 					else {
 						PaidRegistration("PayLater");
-					}	
-				}
-				}
-		    
+					}
+				}}
+						    
 			if(UI.equalsIgnoreCase("Simple"))
 			{
 			Event_Reg_Simple_Page Reg_Simple=new Event_Reg_Simple_Page(driver);
 			UtilitiesWeb.wait_until_the_page_is_loaded();
-			
-			//UtilitiesWeb.wait_until_element_is_visible(Reg_Simple.firstname, 10);
+			UtilitiesWeb.wait_until_element_is_visible(Reg_Simple.firstname, 10);
 			System.out.println("pointer is here");
 			Reg_Simple.firstname.click();
 			Reg_Simple.firstname.sendKeys(UtilitiesWeb.Randomname(4));
@@ -367,28 +374,11 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 			Reg_Simple.email.click();
 			Reg_Simple.email.sendKeys(UtilitiesWeb.generateEmailid());
 			Reg_Simple.Register_button.click();	
-				
-				
-				
-			}
-			
-//			else if (price=="") {
-//				//if(UI.equalsIgnoreCase("Tabbed")) {
-//					
-//				
-//			}
-//			
-			else {
-				
-				System.out.println("No Tickets are selected");
-				Events_Reg_PaidTickets_Page reg_paid=new Events_Reg_PaidTickets_Page(driver);
-				UtilitiesWeb.wait_until_the_page_is_loaded();
-				Thread.sleep(3000);
-				//UtilitiesWeb.waitForAwhile();
-				//UtilitiesWeb.wait_until_element_is_visible(reg_paid.GetTicketsButton, 8);
-				UtilitiesWeb.scroll_to_particular_element(reg_paid.GetTicketsButton);
-				reg_paid.GetTicketsButton.click();
-			}}}
+			Events_Reg_Tabbed_Page reg3=new Events_Reg_Tabbed_Page(driver);
+			UtilitiesWeb.wait_until_element_is_visible(reg3.success_message, 10);
+			String success_msg=reg3.success_message.getText();
+			System.out.println(success_msg);
+			}}
 			
 			
 	  
