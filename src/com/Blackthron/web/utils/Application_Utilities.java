@@ -356,7 +356,7 @@ public class Application_Utilities extends Base_Test_Web_Utils {
 						PaidRegistration("card");
 					}
 				
-					else {
+					if(Payment_Type.equalsIgnoreCase("PayLater")) {
 						PaidRegistration("PayLater");
 					}
 				}}
