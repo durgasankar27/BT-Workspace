@@ -41,7 +41,7 @@ public class class1 extends BaseTestWeb{
 		Application_Utilities.eventItemCreation("paid", "Main");
 		Application_Utilities.publishAnEvent();
 		Application_Utilities.Eventurl("staging");	
-		Application_Utilities.Registration("Full Width","paid","PayLater");
+		Application_Utilities.Registration("Full Width","paid","Card");
 		//Application_Utilities.Code_creation("amount", 0);
 		
 		//Application_Utilities.Verify_ERS();
