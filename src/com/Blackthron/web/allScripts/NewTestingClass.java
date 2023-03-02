@@ -6,6 +6,7 @@ public class NewTestingClass {
 	{ 
 		int a=10;
 		int b=20;
+		int d=0;
 		
 		// TODO Auto-generated method stub
 
